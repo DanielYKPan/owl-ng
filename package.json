@@ -1,29 +1,23 @@
 {
-  "name": "ng-back-top",
+  "name": "owl-ng",
   "version": "1.0.0-alpha-1",
-  "description": "Angular Back-To-Top Button Component",
+  "description": "Angular Components",
   "keywords": [
     "Angular",
     "rxjs",
-    "button",
-    "back-to-top",
     "component"
   ],
   "author": "daniel pan",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/DanielYKPan/ng-back-top.git"
+    "url": "https://github.com/DanielYKPan/owl-ng.git"
   },
   "scripts": {
     "start": "webpack-dev-server --inline --progress --port 8080",
     "test": "karma start",
     "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail"
   },
-  "jsnext:main": "back-top.module.js",
-  "module": "back-top.module.js",
-  "types": "back-top.module.d.ts",
-  "main": "back-top.bundle.js",
   "dependencies": {
     "@angular/animations": "^4.2.2",
     "@angular/common": "^4.2.2",

@@ -1,0 +1,40 @@
+<div class="owl-slider owl-slider-animate"
+     [ngClass]="{
+        'owl-slider-vertical': vertical,
+        'owl-slider-horizontal': !vertical,
+        'owl-slider-animate': animate
+        }"
+     [ngStyle]="sliderStyle" (click)="onBarClick($event)" #slider>
+    <div class="owl-slider-bar"
+         [style.transition]="isDragging? 'none': null"
+         [ngStyle]="sliderBarStyle"></div>
+    <div *ngIf="!range" class="owl-slider-handle"
+         [ngStyle]="sliderHandleStyle"
+         [style.left]="vertical? null : handleValue + '%'"
+         [style.bottom]="vertical? handleValue + '%' : null"
+         [style.transition]="isDragging? 'none': null"
+         (mousedown)="onMouseDown($event)"
+         (touchstart)="onTouchStart($event)"
+         (touchmove)="onTouchMove($event)"
+         (touchend)="handleDragEnd($event)"></div>
+    <div *ngIf="range" class="owl-slider-handle owl-slider-handle-low"
+         [ngStyle]="sliderHandleStyle"
+         [style.left]="vertical? null : handleValues[0] + '%'"
+         [style.bottom]="vertical? handleValues[0] + '%' : null"
+         [style.transition]="isDragging? 'none': null"
+         [ngClass]="{'owl-slider-handle-active': handleIndex === 0}"
+         (mousedown)="onMouseDown($event, 0)"
+         (touchstart)="onTouchStart($event, 0)"
+         (touchmove)="onTouchMove($event, 0)"
+         (touchend)="handleDragEnd($event)"></div>
+    <div *ngIf="range" class="owl-slider-handle owl-slider-handle-high"
+         [ngClass]="{'owl-slider-handle-active': handleIndex === 1}"
+         [ngStyle]="sliderHandleStyle"
+         [style.left]="vertical? null : handleValues[1] + '%'"
+         [style.bottom]="vertical? handleValues[1] + '%' : null"
+         [style.transition]="isDragging? 'none': null"
+         (mousedown)="onMouseDown($event, 1)"
+         (touchstart)="onTouchStart($event, 1)"
+         (touchmove)="onTouchMove($event, 1)"
+         (touchend)="handleDragEnd($event)"></div>
+</div>
