@@ -1,0 +1,19 @@
+@import 'base/input';
+
+.owl-shadow {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .3);
+}
+
+.owl-ul-reset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  text-decoration: none;
+  font-size: 100%;
+  list-style: none;
+}
+
+.owl-state-disabled {
+  cursor: default !important;
+}

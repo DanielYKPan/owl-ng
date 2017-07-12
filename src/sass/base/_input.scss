@@ -1,0 +1,32 @@
+.owl-hidden-accessible {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+
+  input {
+    transform: scale(0);
+  }
+}
+
+.owl-chkbox {
+  margin-right: .25em;
+
+  .owl-chkbox-box {
+    width: 1.125em;
+    height: 1.125em;
+    line-height: 1.125em;
+    border-radius: 2px;
+    text-align: center;
+  }
+}
+
+.owl-inputtext {
+  margin: 0;
+  outline: medium none;
+  padding: .25em;
+}

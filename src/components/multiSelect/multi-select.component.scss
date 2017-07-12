@@ -1,0 +1,102 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.owl-multiselect {
+  display: inline-block;
+  position: relative;
+  width: auto;
+  cursor: pointer;
+}
+
+.owl-multiselect-label {
+  display: block;
+  padding: .25em 2em .25em .25em;
+  width: auto;
+  border: none;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.owl-multiselect-trigger-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1.5em;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+}
+
+.owl-multiselect-panel {
+  position: absolute;
+  min-width: 10em;
+  padding: .2em;
+}
+
+.owl-multiselect-panel-header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .3em;
+  padding: .25em;
+}
+
+.owl-multiselect-panel-filter {
+  position: relative;
+  flex-grow: 1;
+  margin: 0 .2em;
+}
+
+.owl-multiselect-panel-filter {
+  .owl-inputtext {
+    padding: .125em .125em .125em 1.25em;
+    width: 100%;
+  }
+}
+
+.owl-multiselect-search-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.25em;
+  height: 100%;
+}
+
+.owl-multiselect-cancel-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.125em;
+  height: 1.125em;
+}
+
+.owl-multiselect-panel-items-wrapper {
+  position: relative;
+  overflow: auto;
+  padding: .2em 0;
+}
+
+.owl-multiselect-panel-items {
+}
+
+.owl-multiselect-panel-item {
+  position: relative;
+  display: flex;
+  margin: 1px 0;
+  padding: .125em .25em;
+  border: 0 none;
+  cursor: pointer;
+  white-space: nowrap;
+}

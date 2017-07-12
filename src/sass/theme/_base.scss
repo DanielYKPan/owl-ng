@@ -1,0 +1,55 @@
+.owl-state-default {
+  border: 1px solid #d6d6d6;
+  background: #ffffff;
+  color: #555555;
+
+  svg {
+    fill: #555555;
+  }
+}
+
+.owl-state-active {
+  border: 1px solid #156090;
+  background: #186ba0;
+  color: #FFFFFF;
+
+  svg {
+    fill: #FFFFFF;
+  }
+}
+
+.owl-state-highlight {
+  border-color: #156090;
+  background: #186ba0;
+  color: #FFFFFF;
+
+  svg {
+    fill: #FFFFFF;
+  }
+}
+
+.owl-state-disabled {
+  opacity: 0.35;
+  filter: Alpha(Opacity=35);
+  background-image: none;
+  cursor: default !important;
+}
+
+.owl-corner-all {
+  border-radius: 3px;
+}
+
+.owl-corner-right {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.owl-widget-header {
+  background: linear-gradient(to bottom, #f6f7f9 0%, #ebedf0 100%);
+}
+
+.owl-widget-content {
+  border: 1px solid #D5D5D5;
+  background: #ffffff;
+  color: #222222;
+}

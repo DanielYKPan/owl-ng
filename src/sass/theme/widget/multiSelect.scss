@@ -1,0 +1,23 @@
+.owl-multiselect {
+  &.owl-state-focus {
+    box-shadow: 0 0 5px #1f89ce;
+  }
+}
+
+.owl-multiselect-search-icon svg {
+  fill: #222222;
+}
+
+.owl-multiselect-cancel-icon svg {
+  fill: #1b1d1f;
+}
+
+.owl-multiselect-panel-item:not(.owl-state-highlight):hover {
+  border-color: #c0c0c0;
+  background: #eeeeee;
+  color: #212121;
+}
+
+.owl-multiselect-panel {
+  z-index: 99999;
+}

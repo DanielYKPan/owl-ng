@@ -1,0 +1,117 @@
+<div class="owl-multiselect owl-widget owl-corner-all owl-state-default"
+     [ngClass]="{'owl-state-focus': focus, 'owl-state-disabled': disabled}"
+     [ngStyle]="style" [class]="styleClass"
+     (click)="onMouseClick($event, input)" #container>
+    <div class="owl-hidden-accessible">
+        <input type="text" readonly="readonly" [disabled]="disabled"
+               [attr.id]="inputId"
+               [attr.tabindex]="tabIndex"
+               (blur)="onInputBlur($event)" (focus)="onInputFocus($event)" #input>
+    </div>
+    <div class="owl-multiselect-label-container">
+        <label class="owl-multiselect-label">{{valueAsString}}</label>
+    </div>
+    <div class="owl-multiselect-trigger-icon owl-state-default owl-corner-right">
+        <!-- <editor-fold desc="svg"> -->
+        <svg version="1.1" id="trigger-arrow-down" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             width="10px" height="10px" viewBox="0 0 292.362 292.362" style="enable-background:new 0 0 292.362 292.362;"
+             xml:space="preserve">
+            <g>
+                <path d="M286.935,69.377c-3.614-3.617-7.898-5.424-12.848-5.424H18.274c-4.952,0-9.233,1.807-12.85,5.424
+                    C1.807,72.998,0,77.279,0,82.228c0,4.948,1.807,9.229,5.424,12.847l127.907,127.907c3.621,3.617,7.902,5.428,12.85,5.428
+                    s9.233-1.811,12.847-5.428L286.935,95.074c3.613-3.617,5.427-7.898,5.427-12.847C292.362,77.279,290.548,72.998,286.935,69.377z"/>
+            </g>
+        </svg>
+        <!-- </editor-fold> -->
+    </div>
+    <div class="owl-widget-content owl-corner-all owl-shadow owl-multiselect-panel"
+         [style.display]="panelVisible? 'block': 'none'"
+         (click)="onPanelMouseClick($event)" #panel>
+        <div class="owl-widget-header owl-corner-all owl-multiselect-panel-header">
+            <div class="owl-chkbox">
+                <div class="owl-hidden-accessible">
+                    <input readonly="readonly" type="checkbox" [checked]="isAllChecked()" #cb>
+                </div>
+                <div class="owl-chkbox-box owl-state-default"
+                     [ngClass]="{'owl-state-active': isAllChecked()}"
+                     (click)="toggleAll($event, cb)">
+                    <div class="owl-chkbox-icon" [hidden]="!isAllChecked()">
+                        <!-- <editor-fold desc="svg"> -->
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 29.756 29.756" style="enable-background:new 0 0 29.756 29.756;" xml:space="preserve">
+                            <g>
+                                <path d="M29.049,5.009L28.19,4.151c-0.943-0.945-2.488-0.945-3.434,0L10.172,18.737l-5.175-5.173
+                                    c-0.943-0.944-2.489-0.944-3.432,0.001l-0.858,0.857c-0.943,0.944-0.943,2.489,0,3.433l7.744,7.752
+                                    c0.944,0.943,2.489,0.943,3.433,0L29.049,8.442C29.991,7.498,29.991,5.953,29.049,5.009z"/>
+                            </g>
+                        </svg>
+                        <!-- </editor-fold> -->
+                    </div>
+                </div>
+            </div>
+            <div class="owl-multiselect-panel-filter" *ngIf="filter">
+                <input class="owl-inputtext owl-state-default owl-corner-all" role="textbox" type="text"
+                       (input)="onFilter($event)">
+                <div class="owl-multiselect-search-icon">
+                    <!-- <editor-fold desc="svg"> -->
+                    <svg version="1.1" id="multiselect-search" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         width="70%" height="70%" viewBox="0 0 250.313 250.313" style="enable-background:new 0 0 250.313 250.313;" xml:space="preserve">
+                        <g id="Search">
+                            <path style="fill-rule:evenodd;clip-rule:evenodd;" d="M244.186,214.604l-54.379-54.378c-0.289-0.289-0.628-0.491-0.93-0.76
+                                c10.7-16.231,16.945-35.66,16.945-56.554C205.822,46.075,159.747,0,102.911,0S0,46.075,0,102.911
+                                c0,56.835,46.074,102.911,102.91,102.911c20.895,0,40.323-6.245,56.554-16.945c0.269,0.301,0.47,0.64,0.759,0.929l54.38,54.38
+                                c8.169,8.168,21.413,8.168,29.583,0C252.354,236.017,252.354,222.773,244.186,214.604z M102.911,170.146
+                                c-37.134,0-67.236-30.102-67.236-67.235c0-37.134,30.103-67.236,67.236-67.236c37.132,0,67.235,30.103,67.235,67.236
+                                C170.146,140.044,140.043,170.146,102.911,170.146z"/>
+                        </g>
+                    </svg>
+                    <!-- </editor-fold> -->
+                </div>
+            </div>
+            <div class="owl-multiselect-cancel-icon" (click)="hide()">
+                <!-- <editor-fold desc="svg"> -->
+                <svg version="1.1" id="multiselect-cancel" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     width="10px" height="10px" viewBox="0 0 212.982 212.982" style="enable-background:new 0 0 212.982 212.982;" xml:space="preserve">
+                    <g id="Close">
+                        <path style="fill-rule:evenodd;clip-rule:evenodd;" d="M131.804,106.491l75.936-75.936c6.99-6.99,6.99-18.323,0-25.312
+                            c-6.99-6.99-18.322-6.99-25.312,0l-75.937,75.937L30.554,5.242c-6.99-6.99-18.322-6.99-25.312,0c-6.989,6.99-6.989,18.323,0,25.312
+                            l75.937,75.936L5.242,182.427c-6.989,6.99-6.989,18.323,0,25.312c6.99,6.99,18.322,6.99,25.312,0l75.937-75.937l75.937,75.937
+                            c6.989,6.99,18.322,6.99,25.312,0c6.99-6.99,6.99-18.322,0-25.312L131.804,106.491z"/>
+                    </g>
+                </svg>
+                <!-- </editor-fold> -->
+            </div>
+        </div>
+        <div class="owl-multiselect-panel-items-wrapper">
+            <ul class="owl-multiselect-panel-items owl-ul-reset owl-corner-all"
+                [ngStyle]="{'max-height': scrollHeight}">
+                <li class="owl-multiselect-panel-item owl-corner-all" *ngFor="let item of options"
+                    [ngClass]="{'owl-state-highlight': isSelected(item.value)}"
+                    [style.display]="isItemVisible(item) ? null : 'none'"
+                    (click)="onItemClick($event, item.value)">
+                    <div class="owl-chkbox">
+                        <div class="owl-hidden-accessible">
+                            <input readonly="readonly" type="checkbox" [checked]="isSelected(item.value)">
+                        </div>
+                        <div class="owl-chkbox-box owl-state-default"
+                             [ngClass]="{'owl-state-active': isSelected(item.value)}">
+                            <div class="owl-chkbox-icon" [hidden]="!isSelected(item.value)">
+                                <!-- <editor-fold desc="svg"> -->
+                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                         viewBox="0 0 29.756 29.756" style="enable-background:new 0 0 29.756 29.756;" xml:space="preserve">
+                                    <g>
+                                        <path d="M29.049,5.009L28.19,4.151c-0.943-0.945-2.488-0.945-3.434,0L10.172,18.737l-5.175-5.173
+                                            c-0.943-0.944-2.489-0.944-3.432,0.001l-0.858,0.857c-0.943,0.944-0.943,2.489,0,3.433l7.744,7.752
+                                            c0.944,0.943,2.489,0.943,3.433,0L29.049,8.442C29.991,7.498,29.991,5.953,29.049,5.009z"/>
+                                    </g>
+                                </svg>
+                                <!-- </editor-fold> -->
+                            </div>
+                        </div>
+                    </div>
+                    <label>{{item.label}}</label>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
