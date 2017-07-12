@@ -7,6 +7,7 @@ import {
     ViewChild
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { DomHandlerService } from '../../utils/domhandler.service';
 
 export const SLIDER_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
@@ -61,7 +62,8 @@ export class SliderComponent implements OnInit, AfterViewInit, OnDestroy, Contro
     private dragListener: any;
     private mouseUpListener: any;
 
-    constructor( private renderer: Renderer2 ) {
+    constructor( private renderer: Renderer2,
+                 private domHandler: DomHandlerService ) {
     }
 
     public ngOnInit() {
@@ -219,10 +221,8 @@ export class SliderComponent implements OnInit, AfterViewInit, OnDestroy, Contro
      * */
     private updateSliderData(): void {
         let rect = this.sliderElm.nativeElement.getBoundingClientRect();
-        let pageXOffset = window.pageXOffset || document.documentElement.scrollLeft;
-        let pageYOffset = window.pageYOffset || document.documentElement.scrollTop;
-        this.initX = rect.left + pageXOffset;
-        this.initY = rect.top + pageYOffset;
+        this.initX = rect.left + this.domHandler.getWindowScrollLeft();
+        this.initY = rect.top + this.domHandler.getWindowScrollTop();
         this.sliderWidth = this.sliderElm.nativeElement.offsetWidth;
         this.sliderHeight = this.sliderElm.nativeElement.offsetHeight;
         return;

@@ -92,4 +92,14 @@ export class DomHandlerService {
 
         return player;
     }
+
+    public getWindowScrollLeft(): number {
+        let doc = document.documentElement;
+        return (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0);
+    }
+
+    public getWindowScrollTop(): number {
+        let doc = document.documentElement;
+        return (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
+    }
 }
